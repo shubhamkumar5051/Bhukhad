@@ -1982,11 +1982,36 @@ const restroList = [
 
 //3rd way :- destructing one level more :- we will destructure restaurant into specific variable. for clean code
 
-const RestroCard=({restaurant})=>{
+// const RestroCard=({restaurant})=>{
  
-  const {cloudinaryImageId, name, cuisines, avgRating} = restaurant.info;  //desturcturing restaurant here
-  // why restaurant.info ?  beacuse, i have all those data inside info
+//   const {cloudinaryImageId, name, cuisines, avgRating} = restaurant.info;  //desturcturing restaurant here
+//   // why restaurant.info ?  beacuse, i have all those data inside info
 
+//   return(
+//     <div className="card">
+//      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
+//      <h2>{name}</h2>
+//      <h3>{cuisines.join(", ")}</h3>
+//      <h4>{avgRating}</h4>
+//     </div>
+//   )
+// }
+
+
+// const BodyComponent =()=>{
+//   return (
+//    <div className="restro-list">
+//     <RestroCard restaurant={restroList[0]} hello="world"/>
+//     <RestroCard restaurant={restroList[1]} hello="world"/>
+//     <RestroCard restaurant={restroList[2]} hello="world"/>
+//     <RestroCard restaurant={restroList[3]} hello="world"/>
+//   </div>
+//   )
+// }
+
+
+// 4th way: i want to destructure on the fly.. just accepting as param
+const RestroCard=({name, cuisines, cloudinaryImageId, avgRating})=>{
   return(
     <div className="card">
      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
@@ -2001,10 +2026,14 @@ const RestroCard=({restaurant})=>{
 const BodyComponent =()=>{
   return (
    <div className="restro-list">
-    <RestroCard restaurant={restroList[0]} hello="world"/>
-    <RestroCard restaurant={restroList[1]} hello="world"/>
-    <RestroCard restaurant={restroList[2]} hello="world"/>
-    <RestroCard restaurant={restroList[3]} hello="world"/>
+    {/* using spread operator here. it will spread my object */}
+    <RestroCard {...restroList[0].info}/>  
+    <RestroCard {...restroList[1].info}/>  
+    <RestroCard {...restroList[2].info}/>  
+    <RestroCard {...restroList[3].info}/>
+    <RestroCard {...restroList[4].info}/>  
+    <RestroCard {...restroList[5].info}/>    
+   
   </div>
   )
 }
