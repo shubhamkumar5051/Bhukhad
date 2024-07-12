@@ -2023,17 +2023,29 @@ const RestroCard=({name, cuisines, cloudinaryImageId, avgRating})=>{
 }
 
 
+// const BodyComponent =()=>{
+//   return (
+//    <div className="restro-list">
+//     {/* using spread operator here. it will spread my object */}
+//     <RestroCard {...restroList[0].info}/>  
+//     <RestroCard {...restroList[1].info}/>  
+//     <RestroCard {...restroList[2].info}/>  
+//     <RestroCard {...restroList[3].info}/>
+//     <RestroCard {...restroList[4].info}/>  
+//     <RestroCard {...restroList[5].info}/>    
+   
+//   </div>
+//   )
+// }
+
 const BodyComponent =()=>{
   return (
    <div className="restro-list">
-    {/* using spread operator here. it will spread my object */}
-    <RestroCard {...restroList[0].info}/>  
-    <RestroCard {...restroList[1].info}/>  
-    <RestroCard {...restroList[2].info}/>  
-    <RestroCard {...restroList[3].info}/>
-    <RestroCard {...restroList[4].info}/>  
-    <RestroCard {...restroList[5].info}/>    
-   
+    {
+      restroList.map((restro) => {
+        return <RestroCard {...restro.info}/>
+      })
+    }
   </div>
   )
 }
