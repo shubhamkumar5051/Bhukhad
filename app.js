@@ -26,7 +26,6 @@ const Title = () => {
       id="img"
       src="https://logosmarcas.net/wp-content/uploads/2020/11/Swiggy-Logo.png"
       alt="logo"
-      srcset=""
     />
   );
 };
@@ -1948,24 +1947,42 @@ const restroList = [
   },
 ]
 
-const RestroCard=()=>{
+
+//using props.. here i will get the data in the from of objects
+
+// const RestroCard=(props)=>{
+//   console.log(props);
+//   return(
+//     <div className="card">
+//      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + props.restaurant.info?.cloudinaryImageId}></img>
+//      <h2>{props.restaurant.info?.name}</h2>
+//      <h3>{props.restaurant.info?.cuisines.join(", ")}</h3>
+//      <h4>{props.restaurant.info?.avgRating}</h4>
+//     </div>
+//   )
+// }
+
+
+//object destructuring on the fly.. no need to do props.restaurant.info.name
+const RestroCard=({restaurant})=>{
+  console.log(props);
   return(
     <div className="card">
-     { <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restroList[1].info?.cloudinaryImageId}></img> }
-     <h2>{restroList[1].info?.name}</h2>
-     <h3>{restroList[1].info?.cuisines.join(", ")}</h3>
-     <h4>{restroList[1].info?.avgRating}</h4>
+     <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurant.info?.cloudinaryImageId}></img>
+     <h2>{restaurant.info?.name}</h2>
+     <h3>{restaurant.info?.cuisines.join(", ")}</h3>
+     <h4>{restaurant.info?.avgRating}</h4>
     </div>
   )
 }
+
 const BodyComponent =()=>{
   return (
    <div className="restro-list">
-    <RestroCard/>
-    <RestroCard/>
-    <RestroCard/>
-    <RestroCard/>
-    <RestroCard/>
+    <RestroCard restaurant={restroList[0]} hello="world"/>
+    <RestroCard restaurant={restroList[1]} hello="world"/>
+    <RestroCard restaurant={restroList[2]} hello="world"/>
+    <RestroCard restaurant={restroList[3]} hello="world"/>
   </div>
   )
 }
