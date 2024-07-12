@@ -1,122 +1,85 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-//using javascript
 
-// let x = document.querySelector('#ram');
-// let temp= document.createElement('h1');
-// temp.innerText = "kya g"
-// x.appendChild(temp);
-
-//using react
-//const temp = React.createElement('h1', {} , 'hello world');
-//const root =ReactDOM.createRoot(document.getElementById('ram'));
-// root.render(temp);
-
-//-----------------------------------------------------------
-
-
-//creating nested structure using react
-{
-  /* 
-    <div id="parent">
-        <div id="child">
-            <h1>
-             Hello
-            </h1>
-        </div>
+/**
+ * Header
+ * - logo
+ * - Nav Items (Right side)
+ * - Cart
+ *
+ * Body
+ * - Search Bar
+ * - Restaurant container
+ *   - Restaurant card
+ *     - image
+ *     - Name of the restro, star rating, cusines, delivery time
+ *
+ * Footer
+ * - copyright
+ * - Links
+ * - Address
+ * - contact
+ */
+const Title = () => {
+  return (
+    <img
+      id="img"
+      src="https://logosmarcas.net/wp-content/uploads/2020/11/Swiggy-Logo.png"
+      alt="logo"
+      srcset=""
+    />
+  );
+};
+const HeaderComponent = () => {
+  return (
+    <div className="header">
+      <Title />
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>ContactUS</li>
+          <li>Cart</li>
+        </ul>
+      </div>
     </div>
-*/
-}
+  );
+};
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
-    React.createElement("h1", {}, "hello i am h1 tag")
+
+const RestroCard=()=>{
+  return(
+    <div className="card">
+      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/60497022-434e-4d21-bc0e-813fea770ae5_654087.JPG" alt="" srcset="" />
+      <h3>Burger King</h3>
+      <h4>Burger, American</h4>
+      <h5>4.2 stars</h5>
+    </div>
   )
-);
-// const root =ReactDOM.createRoot(document.getElementById('ram'));
-// root.render(parent);
-// console.log(parent);
-
-
-
-
-
-
-//-----------------------------------------------------------
-
-
-
-
-
-
-//creating nested structure using react
-{
-  /* 
-    <div id="parent">
-        <div id="child">
-            <h1>Hello</h1>     // two elements as siblings
-            <h2>hello again</h2>
-        </div>
-    </div>
-*/
+}
+const BodyComponent =()=>{
+  return (
+   <>
+    <RestroCard/>
+  </>
+  )
 }
 
-const parent1 = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "hello i am h1 tag"),
-    React.createElement("h2", {}, "hello i am h2 tag"),
-  ])
-);
-// const root1 = ReactDOM.createRoot(document.getElementById("ram"));
-// root1.render(parent1);
-// console.log(parent1);
-
-
-
-
-
-
-
-//-----------------------------------------------------------
-
-
-
-
-
-
-//creating nested structure using react
-{
-  /* 
-    <div id="parent">
-        <div id="child1">
-            <h1>Hello</h1>     // two elements as siblings
-            <h2>hello again</h2>
-        </div>
-
-        <div id="child2">
-            <h1>Hello</h1>     // two elements as siblings
-            <h2>hello again</h2>
-        </div>
-    </div>
-*/
+const FooterComponent =()=>{
+  return(
+    <h2>Footer</h2>
+  )
 }
 
-const parent2 = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "h1 tag"),
-    React.createElement("h2", {}, "h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "h1 tag"),
-    React.createElement("h2", {}, "h2 tag"),
-  ]),
-]);
+const AppLayout = () => {
+  return (
+    <React.Fragment> 
+    <HeaderComponent/>
+    <BodyComponent/>
+    <FooterComponent/>
+    </React.Fragment>
+  )
+};
 
-const root = ReactDOM.createRoot(document.getElementById('ram'));
-root.render(parent2)
+const root = ReactDOM.createRoot(document.getElementById("ram"));
+root.render(<AppLayout />);
