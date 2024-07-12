@@ -1947,7 +1947,7 @@ const restroList = [
   },
 ]
 
-
+//1st way
 //using props.. here i will get the data in the from of objects
 
 // const RestroCard=(props)=>{
@@ -1963,17 +1963,40 @@ const restroList = [
 // }
 
 
+
+
+//2nd way
 //object destructuring on the fly.. no need to do props.restaurant.info.name
+// const RestroCard=({restaurant})=>{
+//   return(
+//     <div className="card">
+//      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurant.info?.cloudinaryImageId}></img>
+//      <h2>{restaurant.info?.name}</h2>
+//      <h3>{restaurant.info?.cuisines.join(", ")}</h3>
+//      <h4>{restaurant.info?.avgRating}</h4>
+//     </div>
+//   )
+// }
+
+
+
+//3rd way :- destructing one level more :- we will destructure restaurant into specific variable. for clean code
+
 const RestroCard=({restaurant})=>{
+ 
+  const {cloudinaryImageId, name, cuisines, avgRating} = restaurant.info;  //desturcturing restaurant here
+  // why restaurant.info ?  beacuse, i have all those data inside info
+
   return(
     <div className="card">
-     <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurant.info?.cloudinaryImageId}></img>
-     <h2>{restaurant.info?.name}</h2>
-     <h3>{restaurant.info?.cuisines.join(", ")}</h3>
-     <h4>{restaurant.info?.avgRating}</h4>
+     <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
+     <h2>{name}</h2>
+     <h3>{cuisines.join(", ")}</h3>
+     <h4>{avgRating}</h4>
     </div>
   )
 }
+
 
 const BodyComponent =()=>{
   return (
