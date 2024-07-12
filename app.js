@@ -46,14 +46,20 @@ const HeaderComponent = () => {
   );
 };
 
+const burgerKing = {
+  name : "Burger King",
+  img : "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/60497022-434e-4d21-bc0e-813fea770ae5_654087.JPG",
+  cusines : ["Amrican", "Burger"],
+  ratings : "4.5"
+};
 
 const RestroCard=()=>{
   return(
     <div className="card">
-      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/60497022-434e-4d21-bc0e-813fea770ae5_654087.JPG" alt="" srcset="" />
-      <h3>Burger King</h3>
-      <h4>Burger, American</h4>
-      <h5>4.2 stars</h5>
+     <img src = {burgerKing.img}></img>
+     <h2>{burgerKing.name}</h2>
+     <h3>{burgerKing.cusines.join(", ")}</h3>
+     <h4>{burgerKing.ratings}</h4>
     </div>
   )
 }
