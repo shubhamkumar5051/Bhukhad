@@ -1965,7 +1965,6 @@ const restroList = [
 
 //object destructuring on the fly.. no need to do props.restaurant.info.name
 const RestroCard=({restaurant})=>{
-  console.log(props);
   return(
     <div className="card">
      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurant.info?.cloudinaryImageId}></img>
