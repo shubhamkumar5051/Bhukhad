@@ -29,3 +29,8 @@
 .card > img{
     width: 100%;
 }
+
+.restro-list{
+    display: flex;
+    flex-wrap: wrap;
+}
