@@ -1984,7 +1984,7 @@ const restroList = [
 
 // const RestroCard=({restaurant})=>{
  
-//   const {cloudinaryImageId, name, cuisines, avgRating} = restaurant.info;  //desturcturing restaurant here
+//   const {cloudinaryImageId, name, cuisines, avgRating} = restaurant?.info;  //desturcturing restaurant here
 //   // why restaurant.info ?  beacuse, i have all those data inside info
 
 //   return(
@@ -2010,17 +2010,29 @@ const restroList = [
 // }
 
 
-// 4th way: i want to destructure on the fly.. just accepting as param
-const RestroCard=({name, cuisines, cloudinaryImageId, avgRating})=>{
-  return(
-    <div className="card">
-     <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
-     <h2>{name}</h2>
-     <h3>{cuisines.join(", ")}</h3>
-     <h4>{avgRating}</h4>
-    </div>
-  )
-}
+// // 4th way: i want to destructure on the fly.. just accepting as param
+// const RestroCard=({name, cuisines, cloudinaryImageId, avgRating})=>{
+//   return(
+//     <div className="card">
+//      <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="image"></img>
+//      <h2>{name}</h2>
+//      <h3>{cuisines.join(", ")}</h3>
+//      <h4>{avgRating}</h4>
+//     </div>
+//   )
+// }
+
+// const BodyComponent =()=>{
+//   return (
+//    <div className="restro-list">
+//     {
+//       restroList.map((restro) => {
+//         return <RestroCard {...restro.info} key={restro.info.id}/>
+//       })
+//     }
+//   </div>
+//   )
+// }
 
 
 // const BodyComponent =()=>{
@@ -2038,12 +2050,27 @@ const RestroCard=({name, cuisines, cloudinaryImageId, avgRating})=>{
 //   )
 // }
 
+
+// my way to do the task
+const RestroCard=(props)=>{
+  const{cloudinaryImageId,name, cuisines, avgRating} = props.restaurants?.info;
+  return(
+    <div className="card">
+     <img src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="image"></img>
+     <h2>{name}</h2>
+     <h3>{cuisines.join(", ")}</h3>
+     <h4>{avgRating}</h4>
+    </div>
+  )
+}
+
 const BodyComponent =()=>{
   return (
    <div className="restro-list">
     {
       restroList.map((restro) => {
-        return <RestroCard {...restro.info}/>
+        
+        return <RestroCard restaurants={restro} key={restro.info.id}/>
       })
     }
   </div>
