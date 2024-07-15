@@ -21,10 +21,10 @@
 }
 
 .card{
-    width: 200px;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+    margin: 20px;
+    width: 260px;
+    height: 500px;
+    background-color: #f0f0f0;
 }
 .card > img{
     width: 100%;
@@ -34,4 +34,19 @@
 .restro-list{
     display: flex;
     flex-wrap: wrap;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    margin: 20px;
+    width: 260px;
+    height: 400px;
+    background-color: #f0f0f0;
+}
+.card-data{
+   padding: 0px 15px;
 }
