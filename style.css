@@ -50,3 +50,9 @@
 .card-data{
    padding: 0px 15px;
 }
+
+.login{
+    padding: 0px 20px;
+    cursor: pointer;
+}
+

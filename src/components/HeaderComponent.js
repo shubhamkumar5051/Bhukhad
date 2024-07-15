@@ -1,22 +1,34 @@
+import { useState } from "react";
 import { logo_img } from "../utils/link";
-const HeaderComponent = () => {
-    return (
-      <div className="header">
-       <img
-        id="img"
-        src={logo_img}
-        alt="logo"
-      />
-        <div className="nav-items">
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>ContactUS</li>
-            <li>Cart</li>
-          </ul>
-        </div>
-      </div>
-    );
-  };
 
-  export default HeaderComponent;
+const HeaderComponent = () => {
+   const [btn, setbtn] = useState("Login");
+
+ 
+  return (
+    <div className="header">
+      <img id="img" src={logo_img} alt="logo" />
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>ContactUS</li>
+          <li>Cart</li>
+          <li>
+            <button
+              className="login"
+              type="button"
+              onClick={() => {
+                btn==="Login" ? setbtn("Logout") : setbtn("Login");
+              }}
+            >
+              {btn}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default HeaderComponent;
