@@ -4,8 +4,8 @@ import Shimmer from "./Shimmer";
 
 const BodyComponent = () => {
     //local state variable using react hooks :- useState
- let[restraurantList, setrestraurantList]=useState([]);
-
+ const[restraurantList, setrestraurantList]=useState([]);
+ const[searchTxt, setsearchTxt] = useState("");
 
 //  json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
  useEffect( () => {
@@ -34,6 +34,15 @@ const BodyComponent = () => {
   return (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input type="text" className="search-box" value={searchTxt} onChange={(e)=>{setsearchTxt(e.target.value)}}/>
+          <button type="button" onClick={()=>{
+            newList1 = restraurantList.filter(
+              (restro) => restro.info.name.toLowerCase() == searchTxt.toLowerCase()
+            );
+            setrestraurantList(newList1);
+          }}>Search</button>
+        </div>
         <button
           className="filterBtn"
           type="button"

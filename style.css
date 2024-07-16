@@ -56,3 +56,10 @@
     cursor: pointer;
 }
 
+.filter{
+    display: flex;
+}
+
+.search{
+    margin-right: 10px;
+}
