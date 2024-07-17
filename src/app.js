@@ -3,10 +3,47 @@ import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 import FooterComponent from "./components/FooterComponent";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Error from "./components/Error";
+import About from "./components/About";
+import ContactUS from "./components/ContactUS";
+import Cart from "./components/Cart";
 
 
 
 
+const AppLayout = () => {
+  return (
+    <React.Fragment> 
+    <HeaderComponent/>
+    <BodyComponent/>
+    <FooterComponent/>
+    </React.Fragment>
+  )
+};
+
+const appRouter = createBrowserRouter([
+  {
+    path : "/",
+    element : <AppLayout/>,
+    errorElement : <Error/>
+  },
+  {
+    path : "/About",
+    element :<About/>
+  },
+  {
+   path : "/ContactUs",
+   element : <ContactUS/>
+  },
+  {
+    path : "/Cart",
+    element : <Cart/>
+  }
+])
+
+const root = ReactDOM.createRoot(document.getElementById("ram"));
+root.render(<RouterProvider router={appRouter}/>);
 
 
 //1st way
@@ -120,15 +157,4 @@ import FooterComponent from "./components/FooterComponent";
 
 
 
-const AppLayout = () => {
-  return (
-    <React.Fragment> 
-    <HeaderComponent/>
-    <BodyComponent/>
-    <FooterComponent/>
-    </React.Fragment>
-  )
-};
 
-const root = ReactDOM.createRoot(document.getElementById("ram"));
-root.render(<AppLayout />);

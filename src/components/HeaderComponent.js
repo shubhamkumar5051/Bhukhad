@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logo_img } from "../utils/link";
 
 const HeaderComponent = () => {
    const [btn, setbtn] = useState("Login");
+   console.log("header render");
+
+
+   useEffect( ()=> {console.log("useEffect render")}, [btn]);
 
  
   return (
