@@ -73,7 +73,7 @@ const BodyComponent = () => {
           type="button"
           onClick={() => {
             newList = restraurantList.filter(
-              (restro) => restro.info.avgRating >= 4.1
+              (restro) => restro.info.avgRating >= 4.3
             );
             setfilterRestro(newList);
           }}

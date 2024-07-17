@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 import FooterComponent from "./components/FooterComponent";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Error from "./components/Error";
 import About from "./components/About";
 import ContactUS from "./components/ContactUS";
@@ -16,7 +16,7 @@ const AppLayout = () => {
   return (
     <React.Fragment> 
     <HeaderComponent/>
-    <BodyComponent/>
+    <Outlet/>
     <FooterComponent/>
     </React.Fragment>
   )
@@ -26,19 +26,25 @@ const appRouter = createBrowserRouter([
   {
     path : "/",
     element : <AppLayout/>,
+    children : [
+      {
+        path : '/',
+        element : <BodyComponent/>
+      },
+      {
+        path : "/about",
+        element :<About/>
+      },
+      {
+       path : "/contact",
+       element : <ContactUS/>
+      },
+      {
+        path : "/cart",
+        element : <Cart/>
+      }
+    ],
     errorElement : <Error/>
-  },
-  {
-    path : "/About",
-    element :<About/>
-  },
-  {
-   path : "/ContactUs",
-   element : <ContactUS/>
-  },
-  {
-    path : "/Cart",
-    element : <Cart/>
   }
 ])
 
