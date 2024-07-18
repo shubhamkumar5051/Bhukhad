@@ -8,9 +8,9 @@ const RestroCard=(props)=>{
     <div className="card-data">
     <h2>{name}</h2>
      <h3>{cuisines.join(", ")}</h3>
-     <h4>{avgRating}</h4>
+     <h4>{avgRating} ★</h4>
      <h4>{costForTwo}</h4>
-     <h4>{sla.slaString}</h4>
+     <h4>Delivery Time: {sla.slaString}</h4>
     </div>
     </div>
   )

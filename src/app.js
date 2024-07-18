@@ -8,6 +8,7 @@ import Error from "./components/Error";
 import About from "./components/About";
 import ContactUS from "./components/ContactUS";
 import Cart from "./components/Cart";
+import RestroMenu from "./components/RestroMenu";
 
 
 
@@ -42,6 +43,10 @@ const appRouter = createBrowserRouter([
       {
         path : "/cart",
         element : <Cart/>
+      },
+      {
+        path : "/restro/:resId",
+        element : <RestroMenu/>
       }
     ],
     errorElement : <Error/>
