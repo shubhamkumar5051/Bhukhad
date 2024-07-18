@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const BodyComponent = () => {
   //console.log("body re-render"); // for checking re-render cycle
@@ -34,25 +35,22 @@ const BodyComponent = () => {
 
   //conditional rendering
 
-
-   if (restraurantList.length === 0) {
-     return <Shimmer/>
-   }
-  let temper=0;
+  if (restraurantList.length === 0) {
+    return <Shimmer />;
+  }
+  let temper = 0;
   return (
     <div className="body">
       <div className="filter">
-
         <div className="search">
           <input
             type="text"
             className="search-box"
             value={searchTxt}
             onChange={(event) => {
-              setsearchTxt(event.target.value)
+              setsearchTxt(event.target.value);
               //console.log(event.target.value);  //whenever local state var is changed the whole component get re-render. for every single button press. whole comp get painted again
-            }
-        }
+            }}
           />
           <button
             type="button"
@@ -66,7 +64,6 @@ const BodyComponent = () => {
             Search
           </button>
         </div>
-
 
         <button
           className="filterBtn"
@@ -82,10 +79,13 @@ const BodyComponent = () => {
         </button>
       </div>
 
-
       <div className="restro-list">
         {filterRestro.map((restro) => {
-          return <RestroCard restaurants={restro} key={restro.info.id} />;
+          return(
+          <Link key={restro.info.id} to={"/restro/" + restro.info.id}>
+            <RestroCard restaurants={restro} />;
+          </Link>
+          )
         })}
       </div>
     </div>
@@ -93,4 +93,3 @@ const BodyComponent = () => {
 };
 
 export default BodyComponent;
-
