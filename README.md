@@ -16,4 +16,6 @@
  * - Links
  * - Address
  * - contact
+
+ class based component :- let's get classy
  */
