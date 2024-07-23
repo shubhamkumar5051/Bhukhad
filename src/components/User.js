@@ -1,11 +1,27 @@
-const User=(props)=>{
-    return (
-        <div className="user-card">
-            <h2>Name  : {props.name}</h2>
-            <h2>Location: patna</h2>
-            <h4>Contact : 6205799691</h4>
-        </div>
-    )
-}
+import React from "react";
+import UserClass from "./UserClass";
 
+class User extends React.Component{
+    constructor(props)
+    {
+        super(props);
+        console.log("parent constructor");
+
+    }
+
+    componentDidMount()
+    {
+        console.log("parent mount");
+    }
+    render()
+    {
+        console.log("parent render");
+        return (
+            <div>
+                <h1>hello</h1>
+                <UserClass/>
+            </div>
+        )
+    }
+}
 export default User;
