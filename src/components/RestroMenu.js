@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_URL } from "../utils/link";
+import useRestroMenu from "../utils/useRestroMenu";
 
 const RestroMenu = () => {
-  const [menuList, setMenuList] = useState(null);
   const { resId } = useParams();
-
-  useEffect(() => {
-    menuData();
-  }, []);
-
-  const menuData = async () => {
-    try {
-      const data = await fetch(MENU_URL + resId +"&catalog_qa=undefined&submitAction=ENTER");
-      const json = await data.json();
-      const jsonData = json.data;
-      setMenuList(jsonData);
-    } catch (error) {
-      console.error("Error fetching menu data:", error);
-    }
-  };
+  const menuList = useRestroMenu(resId);
 
   if (menuList === null) {
     return <Shimmer />;
@@ -31,11 +16,11 @@ const RestroMenu = () => {
     cuisines,
     avgRatingString,
     city,
-  } = menuList?.cards?.[2]?.card?.card?.info || {};
+  } = menuList?.cards?.[2]?.card?.card?.info;
 
   const itemCards =
     menuList?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card
-      ?.card?.itemCards || [];
+      ?.card?.itemCards;
  //menuList?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.categories[1].title
   return (
     <div>

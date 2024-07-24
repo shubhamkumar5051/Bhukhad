@@ -19,7 +19,9 @@ class User extends React.Component{
         return (
             <div>
                 <h1>hello</h1>
-                <UserClass/>
+                <UserClass name={"first child"}/>
+                <UserClass name={"second child"}/>
+                <UserClass name={"third child"}/>
             </div>
         )
     }
