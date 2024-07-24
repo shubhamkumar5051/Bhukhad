@@ -2,7 +2,7 @@ import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 const BodyComponent = () => {
   //console.log("body re-render"); // for checking re-render cycle
 
@@ -33,12 +33,20 @@ const BodyComponent = () => {
     }
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return (
+      <h1>you are offline</h1>
+    )
+  }
+  
+
   //conditional rendering
 
   if (restraurantList.length === 0) {
     return <Shimmer />;
   }
-  let temper = 0;
   return (
     <div className="body">
       <div className="filter">

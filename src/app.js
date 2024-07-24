@@ -18,7 +18,7 @@ const AppLayout = () => {
     <React.Fragment> 
     <HeaderComponent/>
     <Outlet/>
-    <FooterComponent/>
+    {/* <FooterComponent/> */}
     </React.Fragment>
   )
 };

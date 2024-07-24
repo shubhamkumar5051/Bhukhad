@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import useRestroMenu from "../utils/useRestroMenu";
 
 const RestroMenu = () => {
-  const { resId } = useParams();
-  const menuList = useRestroMenu(resId);
+  const { resId } = useParams(); //inbuild hooks.. someone has written the logic to extract the code from url
+
+  const menuList = useRestroMenu(resId); //custom hook :- utility function. making api call on that custom hook. it makes it testable
 
   if (menuList === null) {
     return <Shimmer />;
