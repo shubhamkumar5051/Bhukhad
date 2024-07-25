@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { RESTRO_URL } from "../utils/link";
+
 const BodyComponent = () => {
   //console.log("body re-render"); // for checking re-render cycle
 
@@ -19,8 +21,7 @@ const BodyComponent = () => {
   //Fetch api GET request using async/await:
   const fetchData = async () => {
     try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.59080&lng=85.13480&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      const data = await fetch( RESTRO_URL
       );
       const json = await data.json();
       const jsonData =
