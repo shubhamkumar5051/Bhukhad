@@ -22,18 +22,17 @@ const HeaderComponent = () => {
           <li className="px-4"> <Link to="/contact">Contact Us</Link> </li>
           <li className="px-4"> <Link to="/cart">cart</Link></li>
           <li className="px-4"> <Link to="/grocery">Grocery</Link> </li>
-          <li>
-            <button
-              className="login"
-              type="button"
-              onClick={() => {
+        </ul>
+      </div>
+      <div>
+      <button
+            className="bg-orange-400 rounded-lg mx-4 my-8 p-2 text-white" type="button"
+            onClick={() => {
                 btn==="Login" ? setbtn("Logout") : setbtn("Login");
               }}
             >
               {btn}
             </button>
-          </li>
-        </ul>
       </div>
     </div>
   );
