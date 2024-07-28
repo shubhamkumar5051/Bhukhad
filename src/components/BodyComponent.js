@@ -50,18 +50,19 @@ const BodyComponent = () => {
   }
   return (
     <div className="body">
-      <div className="filter flex">
+      <div className="filter flex justify-center items-center">
         <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box border-solid"
+            className="search-box border p-2 rounded-lg w-96 shadow-lg"
             value={searchTxt}
             onChange={(event) => {
               setsearchTxt(event.target.value);
               //console.log(event.target.value);  //whenever local state var is changed the whole component get re-render. for every single button press. whole comp get painted again
             }}
+            placeholder="Search restaurants..."
           />
-          <button className="px-4 py-2 bg-green-400 m-4 rounded-lg"
+          <button className="px-4 py-2 bg-orange-400 m-4 rounded-lg text-white"
             type="button"
             onClick={() => {
               newList1 = restraurantList.filter((restro) =>
@@ -76,7 +77,7 @@ const BodyComponent = () => {
 
        <div className="m-4 p-4 flex items-center">
        <button
-          className="px-4 py-2 bg-green-400 m-4 rounded-lg filterBtn"
+          className="px-4 py-2 bg-orange-400 m-4 rounded-lg filterBtn text-white"
           type="button"
           onClick={() => {
             newList = restraurantList.filter(
@@ -85,20 +86,22 @@ const BodyComponent = () => {
             setfilterRestro(newList);
           }}
         >
-          top-rated restro
+          Top Restro
         </button>
        </div>
       </div>
 
-      <div className="flex flex-wrap ">
+     <div>
+       <div className="flex flex-wrap justify-center">
         {filterRestro.map((restro) => {
           return(
           <Link key={restro.info.id} to={"/restro/" + restro.info.id}>
-            <RestroCard restaurants={restro} />;
+            <RestroCard restaurants={restro} />
           </Link>
           )
         })}
       </div>
+     </div>
     </div>
   );
 };
