@@ -50,18 +50,18 @@ const BodyComponent = () => {
   }
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="search-box border-solid"
             value={searchTxt}
             onChange={(event) => {
               setsearchTxt(event.target.value);
               //console.log(event.target.value);  //whenever local state var is changed the whole component get re-render. for every single button press. whole comp get painted again
             }}
           />
-          <button
+          <button className="px-4 py-2 bg-green-400 m-4 rounded-lg"
             type="button"
             onClick={() => {
               newList1 = restraurantList.filter((restro) =>
@@ -74,8 +74,9 @@ const BodyComponent = () => {
           </button>
         </div>
 
-        <button
-          className="filterBtn"
+       <div className="m-4 p-4 flex items-center">
+       <button
+          className="px-4 py-2 bg-green-400 m-4 rounded-lg filterBtn"
           type="button"
           onClick={() => {
             newList = restraurantList.filter(
@@ -86,9 +87,10 @@ const BodyComponent = () => {
         >
           top-rated restro
         </button>
+       </div>
       </div>
 
-      <div className="restro-list">
+      <div className="flex flex-wrap ">
         {filterRestro.map((restro) => {
           return(
           <Link key={restro.info.id} to={"/restro/" + restro.info.id}>
