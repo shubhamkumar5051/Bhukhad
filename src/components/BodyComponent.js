@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { LabelRestroComponent } from "./RestroCard";
 import RestroCard from "./RestroCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +11,8 @@ const BodyComponent = () => {
   const [filterRestro, setfilterRestro] = useState([]);
   const [searchTxt, setsearchTxt] = useState("");
 
+  let LabelRestro = LabelRestroComponent(RestroCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -18,7 +21,7 @@ const BodyComponent = () => {
     try {
       const data = await fetch(RESTRO_URL);
       const json = await data.json();
-      const jsonData = json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const jsonData = json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setrestraurantList(jsonData);
       setfilterRestro(jsonData);
     } catch (error) {
@@ -26,7 +29,7 @@ const BodyComponent = () => {
     }
   };
 
-  
+
 
   const ShimmerGrid = () => (
     <div className="grid grid-cols-3 gap-4">
@@ -47,6 +50,7 @@ const BodyComponent = () => {
 
   return (
     <div className="body">
+       
       <div className="filter flex justify-center items-center">
         <div className="search m-4 p-4">
           <input
@@ -78,7 +82,7 @@ const BodyComponent = () => {
             type="button"
             onClick={() => {
               const newList = restraurantList.filter(
-                (restro) => restro.info.avgRating >= 4.3
+                (restro) => restro.info.avgRating >= 4.2
               );
               setfilterRestro(newList);
             }}
@@ -88,12 +92,17 @@ const BodyComponent = () => {
         </div>
       </div>
 
+
       <div>
+     
         <div className="flex flex-wrap justify-center">
-          {filterRestro.map((restro) => {
+          {
+          filterRestro.map((restro) => {
             return (
               <Link key={restro.info.id} to={"/restro/" + restro.info.id}>
-                <RestroCard restaurants={restro} />
+
+                {/* if the restro is opened then ADD open label to it */}
+              {restro.info.isOpen?(<LabelRestro restaurants={restro}/>):(<RestroCard restaurants={restro} />)}
               </Link>
             );
           })}
