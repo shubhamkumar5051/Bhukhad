@@ -58,7 +58,6 @@ const RestroCard = (props) => {
         <div className="">{initialCuisines}</div>
         <div>{locality}</div>
         <div>{costForTwo}</div>
-        <div>{console.log(isOpen)}</div>
       </div>
     </div>
   );
