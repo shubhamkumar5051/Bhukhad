@@ -21,7 +21,8 @@ const BodyComponent = () => {
     try {
       const data = await fetch(RESTRO_URL);
       const json = await data.json();
-      const jsonData = json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      // console.log(json); //card[0] pe najar rakhna.. change hote rehta h
+      const jsonData = json.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setrestraurantList(jsonData);
       setfilterRestro(jsonData);
     } catch (error) {
@@ -29,6 +30,7 @@ const BodyComponent = () => {
     }
   };
 
+    
 
 
   const ShimmerGrid = () => (
@@ -44,9 +46,9 @@ const BodyComponent = () => {
     return <ShimmerGrid />;
   }
 
-  if (restraurantList.length === 0) {
-    return <ShimmerGrid />;
-  }
+  // if (restraurantList.length === 0) {
+  //   return <ShimmerGrid />;
+  // }
 
   return (
     <div className="body">
