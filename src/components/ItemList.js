@@ -23,8 +23,8 @@ const ItemList = ({ items }) => {
           </div>
           
           <div className="w-3/12 p-4 relative flex items-center justify-center">
-                            <img src={cdn_img + item.card.info.imageId} className="rounded-lg h-36 w-36" alt="Food Image" />
-                            <button className="text-base font-medium absolute bottom-2 w-20 text-center bg-black text-white shadow-lg rounded-lg p-1">ADD +</button>
+            <img src={cdn_img + item.card.info.imageId} className="rounded-lg h-36 w-auto" alt="Food Image" />
+          <button className="text-base font-bold absolute bottom-2 w-24 text-center bg-white text-green-600 shadow-lg rounded-lg p-1">ADD</button>
             </div>
         </div>
       ))}
