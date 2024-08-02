@@ -4,10 +4,12 @@ import ItemList from "./ItemList";
 
 const RestroCategory = ({ data, showItems, setShowIndex }) => {
   
-
+  
   const[showButton, setShowButton]= useState("⬇️");
   const handleClick =()=>{
+    
     setShowIndex();
+  
   }
 
   return (
