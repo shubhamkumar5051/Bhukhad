@@ -21,7 +21,7 @@ const BodyComponent = () => {
     try {
       const data = await fetch(RESTRO_URL);
       const json = await data.json();
-      console.log(json); 
+      //console.log(json); 
       //card[1] pe najar rakhna.. change hote rehta h
       const jsonData = json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setrestraurantList(jsonData);

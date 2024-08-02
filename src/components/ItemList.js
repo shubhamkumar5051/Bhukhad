@@ -2,6 +2,8 @@ import { cdn_img } from "../utils/link";
 
 const ItemList = ({ items }) => {
   //console.log(items);
+
+  
   return (
     <div>
       {items.map((item) => (
@@ -11,19 +13,25 @@ const ItemList = ({ items }) => {
         >
           <div className="w-9/12">
             <div className="py-2">
-              <span className="font-semibold">{item.card.info.name}</span>
+              <div className="font-semibold">{item.card.info.name}</div>
               <span>
-                {" "}- ₹{" "}
+                ₹{" "}
                 {item.card.info.price
                   ? item.card.info.price / 100
                   : item.card.info.defaultPrice / 100}
+                  {" "}
+                <span>
+                {item?.card?.info?.offerTags?.title} 
+                {item?.card?.info?.offerTags?.subTitle}
+                </span>
               </span>
+              
             </div>
             <p className="text-xs"> {item.card.info.description}</p>
           </div>
           
           <div className="w-3/12 p-4 relative flex items-center justify-center">
-            <img src={cdn_img + item.card.info.imageId} className="rounded-lg h-36 w-auto" alt="Food Image" />
+            <img src={cdn_img + item.card.info.imageId} className="rounded-lg h-36 w-36" alt="Food Image" />
           <button className="text-base font-bold absolute bottom-2 w-24 text-center bg-white text-green-600 shadow-lg rounded-lg p-1">ADD</button>
             </div>
         </div>
