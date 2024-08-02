@@ -56,8 +56,8 @@ const RestroMenu = () => {
         return (
           <RestroCategory
             data={category.card.card}
-            showItems={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
+            showItems={index === showIndex? true : false}
+            setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
           />
         ); // making restroCategory as controlled component :- lifting the state up for contolling the children
       })}
